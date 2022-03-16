@@ -10,7 +10,7 @@ source:
   sha256: 60464c8fc25e71e0fd40449a24eae482dcd0fb7fcf823e7de627a6525b3e0d12
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv '
 
@@ -19,15 +19,16 @@ requirements:
     - {{ compiler('c') }}
   host:
     - pip
+    - setuptools
     - python
     - pyasn1
     - pyasn1-modules
-    - openldap
+    - openldap >=2.4.11,<2.5
   run:
     - python
     - pyasn1
     - pyasn1-modules
-    - openldap
+    - openldap >=2.4.11,<2.5
 
 test:
   imports:
@@ -35,7 +36,6 @@ test:
     - ldap.controls
     - ldap.extop
     - ldap.schema
-    # - slapdtest
 
 about:
   home: https://www.python-ldap.org/
